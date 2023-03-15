@@ -2,6 +2,10 @@
          style="background-image:url(./assets/images/background/login-register.jpg);text-align: center">
 
   <div class="login-box card">
+    <div *ngIf="submitFormTrue" class="alert alert-success alert-dismissible fade show" role="alert">
+      user created successfully!<strong><a routerLink="/login" class="alert-link">return home</a></strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
     <div class="card-header">
       <a href="javascript:void(0)" class="text-center "><br/>
         <img src="./assets/images/icon/staff.png" alt="Home"/>
@@ -12,21 +16,36 @@
 
       <form class="form-horizontal form-material"
             autocomplete="off"
-            [formGroup]="loginForm">
+            [formGroup]="registerForm">
         <div class="row" style="text-align: initial">
-          <div class="col12">
+          <div class="col-6">
             <div class="form-group">
               <div class="col-xs-12">
                 <input class="form-control"
                        type="text"
-                       placeholder="Names and surnames"
-                       formControlName="name">
+                       placeholder="Name"
+                       formControlName="namePerson">
               </div>
             </div>
           </div>
-          <div *ngIf="(loginForm.get('name')?.hasError('required')&& submitForm)">
+          <div class="col-6">
+            <div class="form-group">
+              <div class="col-xs-12">
+                <input class="form-control"
+                       type="text"
+                       placeholder="LastName"
+                       formControlName="lastNamePerson">
+              </div>
+            </div>
+          </div>
+          <div *ngIf="(registerForm.get('namePerson')?.hasError('required')&& submitForm)">
             <span style="color: #ef0a0a">
-              El tipo de documento <strong>es requerido</strong>
+              name <strong>Required</strong>
+            </span>
+          </div>
+          <div *ngIf="(registerForm.get('lastNamePerson')?.hasError('required')&& submitForm)">
+            <span style="color: #ef0a0a">
+              LastName <strong>Required</strong>
             </span>
           </div>
           <div class="row g-2" style="margin-top: 0">
@@ -46,9 +65,9 @@
               </div>
             </div>
           </div>
-          <div *ngIf="(loginForm.get('identification')?.hasError('required')&& submitForm)">
+          <div *ngIf="(registerForm.get('identification')?.hasError('required')&& submitForm)">
             <span style="color: #ef0a0a">
-              El tipo de documento <strong>es requerido</strong>
+              Document <strong> required</strong>
             </span>
           </div>
 
@@ -60,15 +79,15 @@
                      formControlName="email">
             </div>
           </div>
-          <div *ngIf="(loginForm.get('email')?.hasError('email') && submitForm)"
+          <div *ngIf="(registerForm.get('email')?.hasError('email') && submitForm)"
                style="padding: 0px;">
             <span style='color: #ef0a0a'>
-              Formato de correo <strong>Invalido</strong>
+              Email format <strong>Invalid</strong>
             </span>
           </div>
-          <div *ngIf="(loginForm.get('email')?.hasError('required')&& submitForm)">
+          <div *ngIf="(registerForm.get('email')?.hasError('required')&& submitForm)">
             <span style="color: #ef0a0a">
-              El email <strong>es requerido</strong>
+               Email <strong>is required</strong>
             </span>
           </div>
           <div class="col-12" style="margin-top: 3px">
@@ -79,9 +98,9 @@
                      formControlName="user">
             </div>
           </div>
-          <div *ngIf="(loginForm.get('user')?.hasError('required')&& submitForm)">
+          <div *ngIf="(registerForm.get('user')?.hasError('required')&& submitForm)">
             <span style="color: #ef0a0a">
-              El tipo de documento <strong>es requerido</strong>
+              User <strong>is required</strong>
             </span>
           </div>
 
@@ -93,9 +112,9 @@
                      formControlName="password">
             </div>
           </div>
-          <div *ngIf="(loginForm.get('password')?.hasError('required')&& submitForm) ">
+          <div *ngIf="(registerForm.get('password')?.hasError('required')&& submitForm) ">
             <span style="color: #ef0a0a">
-              La contraseña <strong>es requerida</strong>
+              password <strong>is required</strong>
             </span>
           </div>
 
@@ -117,5 +136,7 @@
 
       </form>
     </div>
+
   </div>
+
 </section>

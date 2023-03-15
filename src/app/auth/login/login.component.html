@@ -2,6 +2,10 @@
          style="background-image:url(./assets/images/background/login-register.jpg);text-align: center">
 
   <div class="login-box card">
+    <div *ngIf="submitFormFalse" class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong>wrong password or username!</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
     <div class="card-header">
       <a href="javascript:void(0)" class="text-center "><br/>
         <img src="./assets/images/icon/staff.png" alt="Home"/>
@@ -16,16 +20,16 @@
           <div class="col-xs-12">
             <input class="form-control"
                    type="email"
-                   placeholder="Email"
+                   placeholder="User"
                    formControlName="email">
           </div>
         </div>
-        <div *ngIf="(loginForm.get('email')?.hasError('email') && submitForm)"
+        <!--<div *ngIf="(loginForm.get('email')?.hasError('email') && submitForm)"
              style="padding: 0px;">
             <span style='color: #ef0a0a'>
               Formato de correo <strong>Invalido</strong>
             </span>
-        </div>
+        </div>-->
         <div *ngIf="(loginForm.get('email')?.hasError('required')&& submitForm)">
             <span style="color: #ef0a0a">
               El tipo de documento <strong>es requerido</strong>

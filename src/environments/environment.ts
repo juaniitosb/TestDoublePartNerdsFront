@@ -1,5 +1,4 @@
-
-const host = 'http://localhost:4200/';
+const localhost = 'http://localhost:8080/';
 const github = 'https://api.github.com/';
 
 export const environment = {
@@ -10,7 +9,9 @@ export const environment = {
   listUser: `${github}search/users?q=YOUR_NAME`,
   listInfoUser: `${github}users/`,
   //localHost:back
-  login: `${github}users/`,
+  login: `${localhost}managerTask/api/ts/login`,
+  personRegister: `${localhost}managerProducts/api/person/createPerson`,
+  userRegister: `${localhost}managerTask/api/ts/createUser`,
 };
 
 
