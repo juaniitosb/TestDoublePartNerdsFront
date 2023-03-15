@@ -1,0 +1,118 @@
+<div id="wrapper" class="login-register login-sidebar"
+     style="background-image:url(./assets/images/background/login-register.jpg);">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="car-body">
+          <div class="col-6 offset-5">
+            <div class="col-6">
+              <nav class="navbar bg-body-tertiary">
+                <div class="container">
+                  <h3> Github Users</h3>
+                  <button class="btn btn-outline-success" (click)="search()">Search</button>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+      <div class="col" *ngFor="let data of dataTable;index as i">
+        <div class="card" style="border-radius: 10%;margin: 33px;opacity: 0.8">
+          <img [src]="data.avatar_url" class="card-img-top" alt="..." style="border-radius: 10%">
+          <div class="card-body">
+            <h5 style="overflow: auto"><span class="material-symbols-outlined"
+                                             style="font-size: initial;margin: 5px">person{{' ' + data.login}}</span>
+            </h5>
+            <!--collapse -->
+            <p>
+              <a class="btn btn-primary" data-bs-toggle="collapse" [href]="'#collapseExample'+i" role="button"
+                 aria-expanded="false" aria-controls="collapseExample" (click)="infoUser(i)">
+                + ver mas...
+              </a>
+            </p>
+            <div class="collapse" id="{{'collapseExample'+i}}">
+              <div class="card card-body" *ngIf="!!data.infoUser">{{(data?.infoUser?.bio || 'sin bio')}}</div>
+            </div>
+            <!--collapse -->
+          </div>
+          <ul class="list-group list-group-flush">
+            <span style="position: absolute" class="material-symbols-outlined">star</span>
+            <li *ngIf="!!data.infoUser"
+                class="list-group-item">{{'public_repos: ' + (data?.infoUser?.public_repos || 'desconocida')}}</li>
+            <li *ngIf="!!data.infoUser"
+                class="list-group-item">{{'location: ' + (data?.infoUser?.location || 'desconocida')}}</li>
+            <li class="list-group-item">Score:
+              <span style="position: absolute" class="material-symbols-outlined">star</span>
+            </li>
+          </ul>
+          <div class="card-body" style="text-align: center">
+            <a href="{{data.html_url}}" target="_blank" class="card-link"><img src="assets/images/icon/github.png"
+                                                                               class="card-img-top" alt="..."
+                                                                               style="border-radius: 10%;height: 40px;width: 40px;margin: 10px"></a>
+            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#exampleModal"
+               (click)="followerInfo(i)"><img
+              src="assets/images/icon/grupo.png" class="card-img-top" alt="..."
+              style="border-radius: 10%;height: 40px;width: 40px;margin: 10px"></a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12" style="text-align: center;background-color: white;height: 500px;padding-top: 200px" *ngIf="displayLoading">
+
+      <div class="spinner-grow text-secondary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <div class="spinner-grow text-secondary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <div class="spinner-grow text-secondary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!---------modal------------>
+<section>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Following({{dataFollowes.length}})</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="login-register login-sidebar"
+               style="background-image:url(./assets/images/background/login-register.jpg);">
+            <div class="row">
+              <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+                <div class="col" *ngFor="let data of dataFollowes;index as i">
+                  <div class="card" style="border-radius: 10%;margin: 33px;opacity: 0.8">
+                    <img [src]="data.avatar_url" class="card-img-top" alt="..." style="border-radius: 10%">
+                    <div class="card-body">
+                      <h5 style="overflow: auto"><span class="material-symbols-outlined"
+                                                       style="font-size: initial;margin: 5px;">person{{' ' + data.login}}</span>
+                      </h5>
+                    </div>
+                    <div class="card-body" style="text-align: center">
+                      <a href="{{data.html_url}}" target="_blank" class="card-link"><img
+                        src="assets/images/icon/github.png"
+                        class="card-img-top" alt="..."
+                        style="border-radius: 10%;height: 40px;width: 40px;"></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

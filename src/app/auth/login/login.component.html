@@ -1,0 +1,105 @@
+<section id="wrapper" class="login-register login-sidebar"
+         style="background-image:url(./assets/images/background/login-register.jpg);text-align: center">
+
+  <div class="login-box card">
+    <div class="card-header">
+      <a href="javascript:void(0)" class="text-center "><br/>
+        <img src="./assets/images/icon/staff.png" alt="Home"/>
+      </a><br>
+      <h5>Log-in</h5>
+    </div>
+    <div class="card-body">
+      <form class="form-horizontal form-material"
+            autocomplete="off"
+            [formGroup]="loginForm">
+        <div class="form-group">
+          <div class="col-xs-12">
+            <input class="form-control"
+                   type="email"
+                   placeholder="Email"
+                   formControlName="email">
+          </div>
+        </div>
+        <div *ngIf="(loginForm.get('email')?.hasError('email') && submitForm)"
+             style="padding: 0px;">
+            <span style='color: #ef0a0a'>
+              Formato de correo <strong>Invalido</strong>
+            </span>
+        </div>
+        <div *ngIf="(loginForm.get('email')?.hasError('required')&& submitForm)">
+            <span style="color: #ef0a0a">
+              El tipo de documento <strong>es requerido</strong>
+            </span>
+        </div>
+        <br>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <input class="form-control"
+                   type="password"
+                   placeholder="Password"
+                   formControlName="password">
+          </div>
+        </div>
+        <div *ngIf="(loginForm.get('password')?.hasError('required')&& submitForm) ">
+            <span style="color: #ef0a0a">
+              La contraseña <strong>es requerida</strong>
+            </span>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-12">
+            <div class="form-check form-switch" style="margin-top: 5vh;text-align: initial">
+              <input type="checkbox"
+                     role="switch"
+                     class="form-check-input"
+                     formControlName="remember"
+                     id="flexSwitchCheckDefault">
+              <label class="form-check-label" for="flexSwitchCheckDefault">Remenber me</label>
+            </div>
+            <br>
+            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              <i class="fa fa-lock m-r-5"></i>
+              Forgot pwd?</a></div>
+        </div>
+
+        <div class="form-group text-center ">
+          <div class="col-xs-12">
+            <button class="btn btn-info btn-lg  btn-rounded" (click)="login()">Log In</button>
+          </div>
+        </div>
+        <div class="form-group ">
+          <div class="col-sm-12">
+            Don't have an account?
+            <a routerLink="/register" class="">
+              <b>Sign Up</b>
+            </a>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">recover password</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <input class="form-control"
+                 type="email"
+                 placeholder="Email"
+                 [(ngModel)]="emailRecover">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="resetPassword()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,121 @@
+<section id="wrapper" class="login-register login-sidebar"
+         style="background-image:url(./assets/images/background/login-register.jpg);text-align: center">
+
+  <div class="login-box card">
+    <div class="card-header">
+      <a href="javascript:void(0)" class="text-center "><br/>
+        <img src="./assets/images/icon/staff.png" alt="Home"/>
+      </a><br>
+      <h5>Register User</h5>
+    </div>
+    <div class="card-body">
+
+      <form class="form-horizontal form-material"
+            autocomplete="off"
+            [formGroup]="loginForm">
+        <div class="row" style="text-align: initial">
+          <div class="col12">
+            <div class="form-group">
+              <div class="col-xs-12">
+                <input class="form-control"
+                       type="text"
+                       placeholder="Names and surnames"
+                       formControlName="name">
+              </div>
+            </div>
+          </div>
+          <div *ngIf="(loginForm.get('name')?.hasError('required')&& submitForm)">
+            <span style="color: #ef0a0a">
+              El tipo de documento <strong>es requerido</strong>
+            </span>
+          </div>
+          <div class="row g-2" style="margin-top: 0">
+            <div class="col-4" style="text-align: initial">
+              <select class="form-select" aria-label="Default select example" id="selectRegister" >
+                <option value="1">CC</option>
+                <option value="2">CE</option>
+                <option value="3">CI</option>
+              </select>
+            </div>
+            <div class="col-8">
+              <div class="col-xs-12" >
+                <input class="form-control"
+                       type="number"
+                       placeholder="identificacion"
+                       formControlName="identification">
+              </div>
+            </div>
+          </div>
+          <div *ngIf="(loginForm.get('identification')?.hasError('required')&& submitForm)">
+            <span style="color: #ef0a0a">
+              El tipo de documento <strong>es requerido</strong>
+            </span>
+          </div>
+
+          <div class="col-12" style="margin-top: 3px">
+            <div class="col-xs-12">
+              <input class="form-control"
+                     type="email"
+                     placeholder="Email"
+                     formControlName="email">
+            </div>
+          </div>
+          <div *ngIf="(loginForm.get('email')?.hasError('email') && submitForm)"
+               style="padding: 0px;">
+            <span style='color: #ef0a0a'>
+              Formato de correo <strong>Invalido</strong>
+            </span>
+          </div>
+          <div *ngIf="(loginForm.get('email')?.hasError('required')&& submitForm)">
+            <span style="color: #ef0a0a">
+              El email <strong>es requerido</strong>
+            </span>
+          </div>
+          <div class="col-12" style="margin-top: 3px">
+            <div class="col-xs-12">
+              <input class="form-control"
+                     type="text"
+                     placeholder="User"
+                     formControlName="user">
+            </div>
+          </div>
+          <div *ngIf="(loginForm.get('user')?.hasError('required')&& submitForm)">
+            <span style="color: #ef0a0a">
+              El tipo de documento <strong>es requerido</strong>
+            </span>
+          </div>
+
+          <div class="col-12" style="margin-top: 3px">
+            <div class="col-xs-12">
+              <input class="form-control"
+                     type="password"
+                     placeholder="Password"
+                     formControlName="password">
+            </div>
+          </div>
+          <div *ngIf="(loginForm.get('password')?.hasError('required')&& submitForm) ">
+            <span style="color: #ef0a0a">
+              La contraseña <strong>es requerida</strong>
+            </span>
+          </div>
+
+
+          <div class="form-group text-center" style="margin-top: 2vh">
+            <div class="col-xs-12">
+              <button class="btn btn-info btn-lg  btn-rounded" (click)="register()">Register</button>
+            </div>
+          </div>
+          <div class="form-group " style="text-align: center">
+            <div class="col-sm-12">
+              <a routerLink="/login" class="">
+                <b>Sing in</b>
+              </a>
+            </div>
+          </div>
+        </div>
+
+
+      </form>
+    </div>
+  </div>
+</section>
