@@ -9,6 +9,7 @@ export const environment = {
   listUser: `${github}search/users?q=YOUR_NAME`,
   listInfoUser: `${github}users/`,
   //localHost:back
+  //localHost:back2
   login: `${localhost}managerTask/api/ts/login`,
   personRegister: `${localhost}managerProducts/api/person/createPerson`,
   userRegister: `${localhost}managerTask/api/ts/createUser`,
