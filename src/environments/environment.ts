@@ -10,6 +10,7 @@ export const environment = {
   listInfoUser: `${github}users/`,
   //localHost:back
   //localHost:back2asd
+
   login: `${localhost}managerTask/api/ts/login`,
   personRegister: `${localhost}managerProducts/api/person/createPerson`,
   userRegister: `${localhost}managerTask/api/ts/createUser`,
